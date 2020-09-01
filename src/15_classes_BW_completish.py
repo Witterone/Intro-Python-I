@@ -2,7 +2,7 @@
 # constructor
 
 class LatLon:
-    def __int__(self,lat,lon):
+    def __init__(self,lat,lon):
        self.lat = lat
        self.lon = lon
 #%%
@@ -13,6 +13,9 @@ class Waypoint(LatLon):
     def __init__(self,name,lat,lon):
         super().__init__(lat,lon)
         self.name = name
+    def __str__(self):
+        return '''The waypoint {self.name} is located at Lat{self.lat},
+    Lon{self.lon}'''.format(self=self)
 #%%
 # Make a class Geocache that can be passed parameters `name`, `difficulty`,
 # `size`, `lat`, and `lon` to the constructor. What should it inherit from?
@@ -22,16 +25,22 @@ class Geocache(Waypoint):
         super().__init__(name,lat,lon)
         self.difficulty = difficulty
         self.size = size
+    
+    def __str__(self):
+        return '''The cache {self.name} of size {self.size}
+    is located at Lat{self.lat}, Lon{self.lon} with a difficulty of
+                {self.difficulty}'''.format(self=self)
+         
 #%%
 # Make a new waypoint and print it out: "Catacombs", 41.70505, -121.51521
 
 Catacombs = Waypoint("Catacombs",41.70505,-121.51521)
 
-print(Catacombs.__str__())
+print(Catacombs.name,Catacombs.lat,Catacombs.lon)
 #%%
 # Without changing the following line, how can you make it print into something
 # more human-readable? Hint: Look up the `object.__str__` method
-waypoint = Catacombs.__str__()
+waypoint = Catacombs
 
 print(waypoint)
 
