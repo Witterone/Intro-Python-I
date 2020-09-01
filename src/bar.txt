@@ -1,0 +1,4 @@
+
+This is an exercise in writing onto a text file.
+I think this is interesting to do without modules.
+Python has more power than I previously knew.
